@@ -5,7 +5,8 @@ const ExchangeTable = ({ currency }: { currency: string }) => {
 
   if (isLoading) return <p>Loading exchanges...</p>;
   if (error) return <p className='text-red-500'>Error loading exchanges</p>;
-  if (!data || data.length === 0) return <p>No exchanges available</p>;
+  if (!data || data.length === 0)
+    return <p className='text-3xl font-semibold'>No exchanges available</p>;
 
   return (
     <table className='w-full mt-6 border-collapse shadow rounded-xl overflow-hidden'>
