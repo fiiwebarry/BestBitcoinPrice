@@ -7,25 +7,36 @@ import PriceList from './components/PriceList/PriceList';
 function App() {
   const [currency, setCurrency] = useState('GBP');
   return (
-    <>
+    <section className=''>
       <div className='grid justify-center'>
-        <h1 className='text-3xl font-bold'>Best Bitcon price</h1>
+        <div className='grid mx-auto justify-center '>
+          <h1 className='text-3xl font-bold mx-auto'>Best Bitcon price</h1>
+        </div>
+        <div className='grid grid-flow-col  items-center gap-20  '>
+          <div>
+            <select
+              value={currency}
+              onChange={(e) => setCurrency(e.target.value)}
+              className='border rounded-md p-2 mb-4 w-100'
+            >
+              <option value='GBP'>GBP</option>
+              <option value='EUR'>EUR</option>
+              <option value='USD'>USD</option>
+            </select>
+          </div>
+          <div>
+            {' '}
+            <PriceList currency={currency} />
+          </div>
+          <div>
+            <BestPrice currency={currency} />
+          </div>
+        </div>
+        <div className='grid justify-center mt-5'>
+          <ExchangeTable currency={currency} />
+        </div>
       </div>
-      <div className='grid grid-flow-col gap-3 '>
-        <select
-          value={currency}
-          onChange={(e) => setCurrency(e.target.value)}
-          className='border rounded-md p-2 mb-4'
-        >
-          <option value='GBP'>GBP</option>
-          <option value='EUR'>EUR</option>
-          <option value='USD'>USD</option>
-        </select>
-        <PriceList currency={currency} />
-        <BestPrice currency={currency} />
-      </div>
-      <ExchangeTable currency={currency} />
-    </>
+    </section>
   );
 }
 
