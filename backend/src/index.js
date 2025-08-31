@@ -1,17 +1,19 @@
-const express = require("express");
+const express = require('express');
+const cors = require('cors');
 const {
   getHighestPrice,
   getPriceList,
-} = require("./service/bitcoinExchangeService");
+} = require('./service/bitcoinExchangeService');
 const app = express();
 const port = 3000;
 
-app.get("/exchangeapp/highestprice/", async (req, res) => {
+app.use(cors());
+app.get('/exchangeapp/highestprice/', async (req, res) => {
   let highestPriceResp = await getHighestPrice();
   res.send(highestPriceResp);
 });
 
-app.get("/exchangeapp/pricelist/", async (req, res) => {
+app.get('/exchangeapp/pricelist/', async (req, res) => {
   let priceListResp = await getPriceList();
   res.send(priceListResp);
 });
