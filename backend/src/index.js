@@ -7,7 +7,18 @@ const {
 const app = express();
 const port = 3000;
 
-app.use(cors());
+const whitelist = ['http://localhost:5173'];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not Allowed by Cors'));
+    }
+  },
+};
+app.use(cors(corsOptions));
+
 app.get('/exchangeapp/highestprice/', async (req, res) => {
   let highestPriceResp = await getHighestPrice();
   res.send(highestPriceResp);
