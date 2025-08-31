@@ -17,7 +17,7 @@ const corsOptions = {
     }
   },
 };
-// app.use(cors(corsOptions));
+app.use(cors(corsOptions));
 
 app.get('/exchangeapp/highestprice/', async (req, res) => {
   let highestPriceResp = await getHighestPrice();
