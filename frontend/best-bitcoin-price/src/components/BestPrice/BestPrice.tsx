@@ -9,17 +9,17 @@ const BestPrice = ({ currency }: { currency: string }) => {
 
   return (
     <div className='text-center my-6'>
-      <h1 className='text-4xl font-bold'>
-        {data.apiName} — {Number(data.price).toLocaleString()} {currency}
-      </h1>
-      {data.timestamp && (
+      <div className='grid grid-flow-row gap-2'>
+        <h1 className='text-4xl font-bold'>
+          {data.apiName} — {Number(data.price).toLocaleString()} {currency}
+        </h1>
         <p className='text-gray-500 text-sm'>
-          Last updated: {new Date(data.timestamp * 1000).toLocaleTimeString()}
+          Last updated: {new Date().toLocaleString()}
         </p>
-      )}
+      </div>
       <button
         onClick={() => refetch()}
-        className='mt-4 px-4 py-2 bg-blue-600 text-white rounded-xl'
+        className='mt-4 px-4 py-2 bg-blue-600 text-white cursor-pointer rounded-xl'
       >
         Refresh
       </button>

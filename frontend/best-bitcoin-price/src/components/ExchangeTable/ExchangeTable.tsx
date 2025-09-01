@@ -11,7 +11,7 @@ const ExchangeTable = ({ currency }: { currency: string }) => {
   return (
     <table className='w-full mt-6 border-collapse shadow rounded-xl overflow-hidden'>
       <thead>
-        <tr className='bg-gray-100'>
+        <tr className='bg-gray-100 font-semibold'>
           <th className='p-2 text-left'>Exchange</th>
           <th className='p-2 text-right'>Price</th>
           <th className='p-2 text-right'>Currency</th>
@@ -23,12 +23,12 @@ const ExchangeTable = ({ currency }: { currency: string }) => {
           <tr key={ex.exchange} className='border-b hover:bg-gray-50'>
             <td className='p-2'>{ex.exchange}</td>
             <td className='p-2 text-right'>
-              {Number(ex.price).toLocaleString()}
+              {ex.price && !isNaN(Number(ex.price))
+                ? Number(ex.price).toLocaleString()
+                : '—'}{' '}
             </td>
             <td className='p-2 text-right'>{ex.currency}</td>
-            <td className='p-2 text-right'>
-              {new Date(ex.timestamp * 1000).toLocaleTimeString()}
-            </td>
+            <td className='p-2 text-right'>{new Date().toLocaleString()}</td>
           </tr>
         ))}
       </tbody>
