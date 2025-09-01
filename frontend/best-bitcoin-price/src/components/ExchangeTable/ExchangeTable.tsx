@@ -21,14 +21,16 @@ const ExchangeTable = ({ currency }: { currency: string }) => {
       <tbody>
         {data.map((ex: any) => (
           <tr key={ex.exchange} className='border-b hover:bg-gray-50'>
-            <td className='p-2'>{ex.exchange}</td>
+            <td className='p-2'>
+              {data.apiName}-{ex.exchange}
+            </td>
             <td className='p-2 text-right'>
               {ex.price && !isNaN(Number(ex.price))
                 ? Number(ex.price).toLocaleString()
                 : '—'}{' '}
             </td>
             <td className='p-2 text-right'>{ex.currency}</td>
-            <td className='p-2 text-right'>{new Date().toLocaleString()}</td>
+            <td className='p-2 text-right'>{ex.timestamp}</td>
           </tr>
         ))}
       </tbody>

@@ -15,6 +15,7 @@ const BestPrice = ({ currency }: { currency: string }) => {
         </h1>
         <p className='text-gray-500 text-sm'>
           Last updated: {new Date().toLocaleString()}
+          {data.timestamp}
         </p>
       </div>
       <button
