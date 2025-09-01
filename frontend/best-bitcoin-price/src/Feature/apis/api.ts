@@ -11,8 +11,9 @@ export const exchangeApi = createApi({
         `/exchangeapp/highestprice/?currency=${currency}`,
     }),
 
-    getPriceList: builder.query<any, void>({
-      query: () => `/exchangeapp/pricelist/`,
+    getPriceList: builder.query<any, string | void>({
+      query: (currency = 'USD') =>
+        `/exchangeapp/pricelist/?currency=${currency}`,
     }),
     getExchanges: builder.query<any, string | void>({
       query: (currency = 'USD') =>

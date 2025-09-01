@@ -1,7 +1,7 @@
 import { useGetPriceListQuery } from '../../Feature/apis/api';
 
-const PriceList = ({ currency }) => {
-  const { data, error, isLoading, refetch } = useGetPriceListQuery();
+const PriceList = ({ currency }: { currency: string }) => {
+  const { data, error, isLoading } = useGetPriceListQuery(currency);
 
   console.log('Price list full response:', { data, error, isLoading });
 
